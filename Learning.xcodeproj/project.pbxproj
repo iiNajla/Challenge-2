@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		330DF5B730AC480C00664D41 /* LJ_Icon.icon in Resources */ = {isa = PBXBuildFile; fileRef = 330DF5B230AC480C00664D41 /* LJ_Icon.icon */; };
 		335DE45430AC23C8001D98EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335DE44830AC23C8001D98EC /* Assets.xcassets */; };
 		335DE45930AC23C8001D98EC /* DayCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE43C30AC23C8001D98EC /* DayCircle.swift */; };
 		335DE45A30AC23C8001D98EC /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE43D30AC23C8001D98EC /* StatCard.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		330DF5B230AC480C00664D41 /* LJ_Icon.icon */ = {isa = PBXFileReference; lastKnownFileType = folder.iconcomposer.icon; path = LJ_Icon.icon; sourceTree = "<group>"; };
 		335DE43C30AC23C8001D98EC /* DayCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCircle.swift; sourceTree = "<group>"; };
 		335DE43D30AC23C8001D98EC /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
 		335DE43F30AC23C8001D98EC /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
@@ -30,7 +32,7 @@
 		335DE44930AC23C8001D98EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		335DE44A30AC23C8001D98EC /* LearningGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningGoalView.swift; sourceTree = "<group>"; };
 		335DE44B30AC23C8001D98EC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
-		33EC1E6D30A30C1100336673 /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Challenge 2.app"; path = "/Applications/Challenge 2/build/Debug/Challenge 2.app"; sourceTree = "<absolute>"; };
+		33EC1E6D30A30C1100336673 /* Learning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Learning.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -55,6 +57,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		330DF5B430AC480C00664D41 /* App Icons */ = {
+			isa = PBXGroup;
+			children = (
+				330DF5B230AC480C00664D41 /* LJ_Icon.icon */,
+			);
+			path = "App Icons";
+			sourceTree = "<group>";
+		};
 		335DE47530AC2609001D98EC /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,15 +88,17 @@
 				335DE47530AC2609001D98EC /* View */,
 				334BA34C30AB93AD00FF59B5 /* ViewModels */,
 				335DE46930AC24E9001D98EC /* Models */,
+				33EC1E6D30A30C1100336673 /* Learning.app */,
+				330DF5B430AC480C00664D41 /* App Icons */,
 			);
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		33EC1E6C30A30C1100336673 /* Challenge 2 */ = {
+		33EC1E6C30A30C1100336673 /* Learning */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 33EC1E7830A30C1200336673 /* Build configuration list for PBXNativeTarget "Challenge 2" */;
+			buildConfigurationList = 33EC1E7830A30C1200336673 /* Build configuration list for PBXNativeTarget "Learning" */;
 			buildPhases = (
 				33EC1E6930A30C1100336673 /* Sources */,
 				33EC1E6A30A30C1100336673 /* Frameworks */,
@@ -98,9 +110,9 @@
 				334BA34C30AB93AD00FF59B5 /* ViewModels */,
 				335DE46930AC24E9001D98EC /* Models */,
 			);
-			name = "Challenge 2";
+			name = Learning;
 			productName = "Challenge 2";
-			productReference = 33EC1E6D30A30C1100336673 /* Challenge 2.app */;
+			productReference = 33EC1E6D30A30C1100336673 /* Learning.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -118,7 +130,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 33EC1E6830A30C1000336673 /* Build configuration list for PBXProject "Challenge 2" */;
+			buildConfigurationList = 33EC1E6830A30C1000336673 /* Build configuration list for PBXProject "Learning" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -132,7 +144,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				33EC1E6C30A30C1100336673 /* Challenge 2 */,
+				33EC1E6C30A30C1100336673 /* Learning */,
 			);
 		};
 /* End PBXProject section */
@@ -141,6 +153,7 @@
 		33EC1E6B30A30C1100336673 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				330DF5B730AC480C00664D41 /* LJ_Icon.icon in Resources */,
 				335DE45430AC23C8001D98EC /* Assets.xcassets in Resources */,
 			);
 		};
@@ -164,7 +177,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		33EC1E7630A30C1200336673 /* Debug configuration for PBXProject "Challenge 2" */ = {
+		33EC1E7630A30C1200336673 /* Debug configuration for PBXProject "Learning" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -225,7 +238,7 @@
 			};
 			name = Debug;
 		};
-		33EC1E7730A30C1200336673 /* Release configuration for PBXProject "Challenge 2" */ = {
+		33EC1E7730A30C1200336673 /* Release configuration for PBXProject "Learning" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -278,11 +291,12 @@
 			};
 			name = Release;
 		};
-		33EC1E7930A30C1200336673 /* Debug configuration for PBXNativeTarget "Challenge 2" */ = {
+		33EC1E7930A30C1200336673 /* Debug configuration for PBXNativeTarget "Learning" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LJ_Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
@@ -320,11 +334,12 @@
 			};
 			name = Debug;
 		};
-		33EC1E7A30A30C1200336673 /* Release configuration for PBXNativeTarget "Challenge 2" */ = {
+		33EC1E7A30A30C1200336673 /* Release configuration for PBXNativeTarget "Learning" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = LJ_Icon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_APP_SANDBOX = YES;
@@ -365,19 +380,19 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		33EC1E6830A30C1000336673 /* Build configuration list for PBXProject "Challenge 2" */ = {
+		33EC1E6830A30C1000336673 /* Build configuration list for PBXProject "Learning" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33EC1E7630A30C1200336673 /* Debug configuration for PBXProject "Challenge 2" */,
-				33EC1E7730A30C1200336673 /* Release configuration for PBXProject "Challenge 2" */,
+				33EC1E7630A30C1200336673 /* Debug configuration for PBXProject "Learning" */,
+				33EC1E7730A30C1200336673 /* Release configuration for PBXProject "Learning" */,
 			);
 			defaultConfigurationName = Release;
 		};
-		33EC1E7830A30C1200336673 /* Build configuration list for PBXNativeTarget "Challenge 2" */ = {
+		33EC1E7830A30C1200336673 /* Build configuration list for PBXNativeTarget "Learning" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33EC1E7930A30C1200336673 /* Debug configuration for PBXNativeTarget "Challenge 2" */,
-				33EC1E7A30A30C1200336673 /* Release configuration for PBXNativeTarget "Challenge 2" */,
+				33EC1E7930A30C1200336673 /* Debug configuration for PBXNativeTarget "Learning" */,
+				33EC1E7A30A30C1200336673 /* Release configuration for PBXNativeTarget "Learning" */,
 			);
 			defaultConfigurationName = Release;
 		};

@@ -9,6 +9,7 @@ struct StatCard: View {
     let label: String
 
     var body: some View {
+
         VStack(spacing: 6) {
 
             Image(systemName: icon)
@@ -20,13 +21,25 @@ struct StatCard: View {
 
             Text(label)
                 .font(.caption2)
-                .foregroundStyle(.gray)
+                .foregroundStyle(.white)
+
         }
         .frame(maxWidth: .infinity)
         .padding(.vertical, 18)
-        .background(
-            Color.white.opacity(0.08),
-            in: RoundedRectangle(cornerRadius: 22)
-        )
+        .background {
+            RoundedRectangle(cornerRadius: 22)
+                .fill(Color.black.opacity(0.65))
+                .glassEffect(
+                    .clear.tint(.white.opacity(0.08)),
+                    in: RoundedRectangle(cornerRadius: 22)
+                )
+        }
+        .overlay {
+            RoundedRectangle(cornerRadius: 22)
+                .strokeBorder(
+                    Color.white.opacity(0.18),
+                    lineWidth: 1
+                )
+        }
     }
 }

@@ -23,9 +23,11 @@ struct ActivitiesCalendarView: View {
     var body: some View {
 
         ZStack {
+
             Color.black.ignoresSafeArea()
 
             ScrollView {
+
                 VStack(spacing: 0) {
 
                     ForEach(viewModel.months, id: \.self) { month in
@@ -46,6 +48,9 @@ struct ActivitiesCalendarView: View {
         }
         .navigationBarBackButtonHidden(true)
         .preferredColorScheme(.dark)
+        .onAppear {
+            viewModel.refreshCalendar()
+        }
     }
 
     // MARK: - Top Bar
@@ -53,14 +58,17 @@ struct ActivitiesCalendarView: View {
     private var topBar: some View {
 
         ZStack {
+
             Text("Activities")
                 .font(.headline)
                 .foregroundStyle(.white)
 
             HStack {
+
                 Button {
                     dismiss()
                 } label: {
+
                     Image(systemName: "chevron.left")
                         .foregroundStyle(.white)
                         .frame(width: 44, height: 44)
@@ -96,6 +104,7 @@ struct ActivitiesCalendarView: View {
                 // Weekday Names
 
                 ForEach(viewModel.weekdays, id: \.self) { name in
+
                     Text(name)
                         .font(.caption2.weight(.semibold))
                         .foregroundStyle(.gray)
@@ -104,6 +113,7 @@ struct ActivitiesCalendarView: View {
                 // Empty Cells
 
                 ForEach(0..<offset, id: \.self) { _ in
+
                     Color.clear
                         .frame(height: 40)
                 }
@@ -146,6 +156,7 @@ struct ActivitiesCalendarView: View {
 // MARK: - Preview
 
 #Preview {
+
     NavigationStack {
         ActivitiesCalendarView()
     }

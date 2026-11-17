@@ -1,7 +1,7 @@
 
 import SwiftUI
 
-// MARK: - Main screen
+// MARK: - Main Screen
 
 struct ActivityTask3View: View {
 
@@ -10,6 +10,7 @@ struct ActivityTask3View: View {
     @StateObject private var viewModel: ActivityTask3ViewModel
 
     init(topic: String = "", timeframe: Timeframe = .week) {
+
         _viewModel = StateObject(
             wrappedValue: ActivityTask3ViewModel(
                 topic: topic,
@@ -21,10 +22,13 @@ struct ActivityTask3View: View {
     // MARK: - Main UI
 
     var body: some View {
+
         ZStack {
+
             Color.black.ignoresSafeArea()
 
             VStack(spacing: 0) {
+
                 header
                 weekStrip
                 statCards
@@ -36,33 +40,54 @@ struct ActivityTask3View: View {
         .toolbar(.hidden, for: .navigationBar)
     }
 
-    // MARK: - Content that depends on the goal state
+    // MARK: - Content
 
     @ViewBuilder
     private var content: some View {
+
         switch viewModel.goalState {
 
         case .inProgress:
+
             Spacer()
+
             logButton
+
+            if viewModel.canUndo {
+                undoButton
+                    .padding(.top, 16)
+            }
+
             Spacer()
+
             freezeSection
 
         case .completed, .notMet:
+
             Spacer()
+
             goalResult
+
+            if viewModel.canUndo {
+                undoButton
+                    .padding(.top, 24)
+            }
+
             Spacer()
+
             setGoalButton
         }
     }
 
-    // MARK: - Goal editor
+    // MARK: - Goal Editor
 
     private var goalEditor: some View {
+
         LearningGoalView(
             topic: viewModel.topic,
             timeframe: viewModel.timeframe
         ) { newTopic, newTimeframe in
+
             viewModel.updateGoal(
                 newTopic: newTopic,
                 newTimeframe: newTimeframe
@@ -73,21 +98,28 @@ struct ActivityTask3View: View {
     // MARK: - Header
 
     private var header: some View {
+
         HStack(alignment: .top) {
 
             VStack(alignment: .leading, spacing: 4) {
+
                 Text("Activity")
                     .font(.largeTitle.bold())
                     .foregroundStyle(.white)
 
-                Text(Date.now.formatted(.dateTime.weekday(.wide).day().month(.wide)))
-                    .font(.subheadline)
-                    .foregroundStyle(.gray)
+                Text(
+                    Date.now.formatted(
+                        .dateTime.weekday(.wide).day().month(.wide)
+                    )
+                )
+                .font(.subheadline)
+                .foregroundStyle(.gray)
             }
 
             Spacer()
 
             HStack(spacing: 12) {
+
                 circleIcon("calendar") {
                     ActivitiesCalendarView()
                 }
@@ -99,7 +131,7 @@ struct ActivityTask3View: View {
         }
     }
 
-    // A round icon that opens another screen when tapped
+    // MARK: - Circle Navigation Icon
 
     private func circleIcon<Destination: View>(
         _ name: String,
@@ -109,19 +141,27 @@ struct ActivityTask3View: View {
         NavigationLink {
             destination()
         } label: {
+
             Image(systemName: name)
                 .foregroundStyle(.white)
                 .frame(width: 44, height: 44)
-                .background(Color.white.opacity(0.12), in: Circle())
+                .background(
+                    Color.white.opacity(0.12),
+                    in: Circle()
+                )
         }
     }
 
-    // MARK: - Week strip
+    // MARK: - Week Strip
 
     private var weekStrip: some View {
+
         HStack {
+
             ForEach(viewModel.days) { day in
+
                 VStack(spacing: 8) {
+
                     Text(day.letter)
                         .font(.caption2)
                         .foregroundStyle(.white)
@@ -137,10 +177,12 @@ struct ActivityTask3View: View {
         .padding(.top, 24)
     }
 
-    // MARK: - Stat cards
+    // MARK: - Stat Cards
 
     private var statCards: some View {
+
         HStack(spacing: 12) {
+
             StatCard(
                 icon: "flame.fill",
                 tint: .appOrange,
@@ -158,81 +200,152 @@ struct ActivityTask3View: View {
         .padding(.top, 16)
     }
 
-    // MARK: - Log button
+    // MARK: - Log Button
 
     private var logButton: some View {
-        let isLogged = (viewModel.todayStatus == .learned)
+
+        let canLog = (viewModel.todayStatus == .none)
+
+        let buttonTitle: String = {
+            switch viewModel.todayStatus {
+            case .learned:
+                return "Logged as Learned"
+            case .freezed:
+                return "Day Freezed"
+            case .none:
+                return "Log as Learned"
+            }
+        }()
 
         return Button {
+
             viewModel.logAsLearned()
+
         } label: {
-            Text(isLogged ? "Logged as Learned" : "Log as Learned")
+
+            Text(buttonTitle)
                 .font(.title3.weight(.semibold))
-                .foregroundStyle(isLogged ? Color.gray : Color.white)
+                .foregroundStyle(canLog ? Color.white : Color.gray)
                 .frame(width: 200, height: 200)
                 .background(
-                    isLogged ? Color.white.opacity(0.1) : Color.appOrange,
+                    canLog ? Color.appOrange : Color.white.opacity(0.1),
                     in: Circle()
                 )
         }
-        .disabled(isLogged)
+        .disabled(!canLog)
     }
 
-    // MARK: - Freeze button
+    // MARK: - Freeze Button
 
     private var freezeSection: some View {
+
         VStack(spacing: 12) {
 
             Button {
+
                 viewModel.freezeDay()
+
             } label: {
-                Text(viewModel.canFreeze ? "Freeze for a day" : "Freezed for a day")
-                    .font(.headline)
-                    .foregroundStyle(viewModel.canFreeze ? Color.white : Color.gray)
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 14)
-                    .background(
-                        viewModel.canFreeze ? Color.appBlue : Color.white.opacity(0.1),
-                        in: Capsule()
-                    )
+
+                Text(
+                    viewModel.canFreeze
+                    ? "Freeze for a day"
+                    : "Freezed for a day"
+                )
+                .font(.headline)
+                .foregroundStyle(
+                    viewModel.canFreeze ? Color.white : Color.gray
+                )
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(
+                    viewModel.canFreeze
+                    ? Color.appBlue
+                    : Color.white.opacity(0.1),
+                    in: Capsule()
+                )
             }
             .disabled(!viewModel.canFreeze)
 
-            Text("\(viewModel.freezedCount) out of \(viewModel.maxFreezes) Freezes used")
-                .font(.caption)
-                .foregroundStyle(.gray)
+            Text(
+                "\(viewModel.freezedCount) out of \(viewModel.maxFreezes) Freezes used"
+            )
+            .font(.caption)
+            .foregroundStyle(.gray)
         }
         .padding(.bottom, 20)
     }
 
-    // MARK: - Goal result
+    // MARK: - Undo Button
 
-    private var goalResult: some View {
-        let isCompleted = (viewModel.goalState == .completed)
+    private var undoButton: some View {
 
-        return VStack(spacing: 8) {
-            Image(systemName: isCompleted ? "hands.sparkles.fill" : "xmark.seal.fill")
-                .font(.system(size: 52))
-                .foregroundStyle(isCompleted ? Color.yellow : Color.appOrange)
-                .padding(.bottom, 16)
+        Button {
 
-            Text(isCompleted ? "Well done!" : "You didn't reach your goal this time.")
-                .font(.headline)
+            viewModel.undoTodayActivity()
+
+        } label: {
+
+            Label("Undo", systemImage: "arrow.uturn.backward")
+                .font(.subheadline.weight(.semibold))
                 .foregroundStyle(.white)
-                .multilineTextAlignment(.center)
-
-            Text(isCompleted ? "Ready for your next goal?" : "Want to set another goal?")
-                .font(.subheadline)
-                .foregroundStyle(.gray)
+                .padding(.horizontal, 22)
+                .padding(.vertical, 12)
+                .background(
+                    Color.white.opacity(0.12),
+                    in: Capsule()
+                )
         }
     }
 
-    // MARK: - Set a goal button
+    // MARK: - Goal Result
+
+    private var goalResult: some View {
+
+        let isCompleted = (viewModel.goalState == .completed)
+
+        return VStack(spacing: 8) {
+
+            Image(
+                systemName: isCompleted
+                ? "hands.sparkles.fill"
+                : "xmark.seal.fill"
+            )
+            .font(.system(size: 52))
+            .foregroundStyle(
+                isCompleted ? Color.yellow : Color.appOrange
+            )
+            .padding(.bottom, 16)
+
+            Text(
+                isCompleted
+                ? "Well done!"
+                : "You didn't reach your goal this time."
+            )
+            .font(.headline)
+            .foregroundStyle(.white)
+            .multilineTextAlignment(.center)
+
+            Text(
+                isCompleted
+                ? "Ready for your next goal?"
+                : "Want to set another goal?"
+            )
+            .font(.subheadline)
+            .foregroundStyle(.gray)
+        }
+    }
+
+    // MARK: - Set a Goal Button
 
     private var setGoalButton: some View {
+
         NavigationLink {
+
             goalEditor
+
         } label: {
+
             Label("Set a goal", systemImage: "pencil.and.outline")
                 .font(.headline)
                 .foregroundStyle(.white)
@@ -247,6 +360,7 @@ struct ActivityTask3View: View {
 // MARK: - Preview
 
 #Preview {
+
     NavigationStack {
         ActivityTask3View()
     }

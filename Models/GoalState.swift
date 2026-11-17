@@ -1,7 +1,7 @@
 
 import Foundation
 
-enum GoalState {
+enum GoalState: String, Codable {
     case inProgress
     case completed
     case notMet

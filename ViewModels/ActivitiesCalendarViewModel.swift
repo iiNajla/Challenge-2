@@ -6,11 +6,22 @@ final class ActivitiesCalendarViewModel: ObservableObject {
 
     // MARK: - Calendar Settings
 
-    let calendar = Calendar(identifier: .gregorian)
+    let calendar: Calendar = {
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.firstWeekday = 1
+        return calendar
+    }()
 
-    let year = 2026
+    private let activityStorageKey = "savedActivities"
 
-    let months = [1, 2, 3]
+    var year: Int {
+        calendar.component(.year, from: Date())
+    }
+
+    var months: [Int] {
+        let currentMonth = calendar.component(.month, from: Date())
+        return Array(max(1, currentMonth - 2)...currentMonth)
+    }
 
     let weekdays = [
         "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"
@@ -19,35 +30,23 @@ final class ActivitiesCalendarViewModel: ObservableObject {
     // MARK: - Today
 
     var today: Date {
-        calendar.date(
-            from: DateComponents(year: 2026, month: 3, day: 12)
-        ) ?? Date()
+        calendar.startOfDay(for: Date())
     }
-
-    // MARK: - Activity Data
-
-    let learnedDays: [Int: Set<Int>] = [
-        1: Set(1...11),
-        2: Set(1...28).subtracting([20, 23]),
-        3: [1, 2, 4, 5, 6, 9, 10, 11]
-    ]
-
-    let freezedDays: [Int: Set<Int>] = [
-        2: [20, 23],
-        3: [3, 7, 8]
-    ]
 
     // MARK: - Calendar Logic
 
     func firstDate(of month: Int) -> Date {
         calendar.date(
-            from: DateComponents(year: year, month: month, day: 1)
+            from: DateComponents(
+                year: year,
+                month: month,
+                day: 1
+            )
         ) ?? Date()
     }
 
     func weekdayOffset(for month: Int) -> Int {
         let first = firstDate(of: month)
-
         return calendar.component(.weekday, from: first) - 1
     }
 
@@ -61,19 +60,34 @@ final class ActivitiesCalendarViewModel: ObservableObject {
         )?.count ?? 30
     }
 
-    // MARK: - Day Status
+    // MARK: - Saved Activity Status
 
     func status(month: Int, day: Int) -> DayStatus {
 
-        if learnedDays[month]?.contains(day) == true {
-            return .learned
+        guard let date = calendar.date(
+            from: DateComponents(
+                year: year,
+                month: month,
+                day: day
+            )
+        ) else {
+            return .none
         }
 
-        if freezedDays[month]?.contains(day) == true {
-            return .freezed
-        }
+        let formatter = DateFormatter()
+        formatter.calendar = calendar
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.dateFormat = "yyyy-MM-dd"
 
-        return .none
+        let key = formatter.string(from: date)
+
+        let savedActivities = UserDefaults.standard.dictionary(
+            forKey: activityStorageKey
+        ) as? [String: String] ?? [:]
+
+        return savedActivities[key].flatMap {
+            DayStatus(rawValue: $0)
+        } ?? .none
     }
 
     // MARK: - Today Check
@@ -81,10 +95,18 @@ final class ActivitiesCalendarViewModel: ObservableObject {
     func isToday(month: Int, day: Int) -> Bool {
 
         let parts = calendar.dateComponents(
-            [.month, .day],
+            [.year, .month, .day],
             from: today
         )
 
-        return parts.month == month && parts.day == day
+        return parts.year == year &&
+               parts.month == month &&
+               parts.day == day
+    }
+
+    // MARK: - Refresh Calendar
+
+    func refreshCalendar() {
+        objectWillChange.send()
     }
 }
