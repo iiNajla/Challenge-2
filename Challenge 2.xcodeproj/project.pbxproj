@@ -6,14 +6,42 @@
 	objectVersion = 110;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		335DE45430AC23C8001D98EC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 335DE44830AC23C8001D98EC /* Assets.xcassets */; };
+		335DE45930AC23C8001D98EC /* DayCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE43C30AC23C8001D98EC /* DayCircle.swift */; };
+		335DE45A30AC23C8001D98EC /* StatCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE43D30AC23C8001D98EC /* StatCard.swift */; };
+		335DE45B30AC23C8001D98EC /* AppColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE43F30AC23C8001D98EC /* AppColors.swift */; };
+		335DE45F30AC23C8001D98EC /* ActivitiesCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE44530AC23C8001D98EC /* ActivitiesCalendarView.swift */; };
+		335DE46030AC23C8001D98EC /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE44630AC23C8001D98EC /* ActivityView.swift */; };
+		335DE46130AC23C8001D98EC /* ActivityView_Task3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE44730AC23C8001D98EC /* ActivityView_Task3.swift */; };
+		335DE46230AC23C8001D98EC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE44930AC23C8001D98EC /* ContentView.swift */; };
+		335DE46330AC23C8001D98EC /* LearningGoalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE44A30AC23C8001D98EC /* LearningGoalView.swift */; };
+		335DE46430AC23C8001D98EC /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 335DE44B30AC23C8001D98EC /* OnboardingView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
-		33EC1E6D30A30C1100336673 /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Challenge 2.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		335DE43C30AC23C8001D98EC /* DayCircle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCircle.swift; sourceTree = "<group>"; };
+		335DE43D30AC23C8001D98EC /* StatCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatCard.swift; sourceTree = "<group>"; };
+		335DE43F30AC23C8001D98EC /* AppColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColors.swift; sourceTree = "<group>"; };
+		335DE44530AC23C8001D98EC /* ActivitiesCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesCalendarView.swift; sourceTree = "<group>"; };
+		335DE44630AC23C8001D98EC /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		335DE44730AC23C8001D98EC /* ActivityView_Task3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView_Task3.swift; sourceTree = "<group>"; };
+		335DE44830AC23C8001D98EC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		335DE44930AC23C8001D98EC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		335DE44A30AC23C8001D98EC /* LearningGoalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LearningGoalView.swift; sourceTree = "<group>"; };
+		335DE44B30AC23C8001D98EC /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		33EC1E6D30A30C1100336673 /* Challenge 2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = "Challenge 2.app"; path = "/Applications/Challenge 2/build/Debug/Challenge 2.app"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		33EC1E6F30A30C1100336673 /* Challenge 2 */ = {
+		334BA34C30AB93AD00FF59B5 /* ViewModels */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "Challenge 2";
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		335DE46930AC24E9001D98EC /* Models */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -27,20 +55,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		335DE47530AC2609001D98EC /* View */ = {
+			isa = PBXGroup;
+			children = (
+				335DE44730AC23C8001D98EC /* ActivityView_Task3.swift */,
+				335DE44830AC23C8001D98EC /* Assets.xcassets */,
+				335DE44630AC23C8001D98EC /* ActivityView.swift */,
+				335DE44B30AC23C8001D98EC /* OnboardingView.swift */,
+				335DE44A30AC23C8001D98EC /* LearningGoalView.swift */,
+				335DE44930AC23C8001D98EC /* ContentView.swift */,
+				335DE43C30AC23C8001D98EC /* DayCircle.swift */,
+				335DE43D30AC23C8001D98EC /* StatCard.swift */,
+				335DE44530AC23C8001D98EC /* ActivitiesCalendarView.swift */,
+				335DE43F30AC23C8001D98EC /* AppColors.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		33EC1E6430A30C1000336673 = {
 			isa = PBXGroup;
 			children = (
-				33EC1E6F30A30C1100336673 /* Challenge 2 */,
-				33EC1E6E30A30C1100336673 /* Products */,
+				335DE47530AC2609001D98EC /* View */,
+				334BA34C30AB93AD00FF59B5 /* ViewModels */,
+				335DE46930AC24E9001D98EC /* Models */,
 			);
-			sourceTree = "<group>";
-		};
-		33EC1E6E30A30C1100336673 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				33EC1E6D30A30C1100336673 /* Challenge 2.app */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -57,7 +95,8 @@
 			buildRules = (
 			);
 			fileSystemSynchronizedGroups = (
-				33EC1E6F30A30C1100336673 /* Challenge 2 */,
+				334BA34C30AB93AD00FF59B5 /* ViewModels */,
+				335DE46930AC24E9001D98EC /* Models */,
 			);
 			name = "Challenge 2";
 			productName = "Challenge 2";
@@ -89,7 +128,7 @@
 			mainGroup = 33EC1E6430A30C1000336673;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 33EC1E6E30A30C1100336673 /* Products */;
+			productRefGroup = 33EC1E6430A30C1000336673;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -102,6 +141,7 @@
 		33EC1E6B30A30C1100336673 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			files = (
+				335DE45430AC23C8001D98EC /* Assets.xcassets in Resources */,
 			);
 		};
 /* End PBXResourcesBuildPhase section */
@@ -110,6 +150,15 @@
 		33EC1E6930A30C1100336673 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			files = (
+				335DE45930AC23C8001D98EC /* DayCircle.swift in Sources */,
+				335DE45A30AC23C8001D98EC /* StatCard.swift in Sources */,
+				335DE45B30AC23C8001D98EC /* AppColors.swift in Sources */,
+				335DE45F30AC23C8001D98EC /* ActivitiesCalendarView.swift in Sources */,
+				335DE46030AC23C8001D98EC /* ActivityView.swift in Sources */,
+				335DE46130AC23C8001D98EC /* ActivityView_Task3.swift in Sources */,
+				335DE46230AC23C8001D98EC /* ContentView.swift in Sources */,
+				335DE46330AC23C8001D98EC /* LearningGoalView.swift in Sources */,
+				335DE46430AC23C8001D98EC /* OnboardingView.swift in Sources */,
 			);
 		};
 /* End PBXSourcesBuildPhase section */
